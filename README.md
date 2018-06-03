@@ -1,60 +1,51 @@
-# Hosting telegram bot on [Heroku](https://heroku.com) for free.
-Easy way to host your python telegram bot on Heroku
+# geekswebbot
+Create bot for your website or blog easily with GeeksWebBot (GWB).
 
-## Deploying via [Heroku Toolbelt](https://toolbelt.heroku.com/) (CLI)
-Install [Heroku Toolbelt](https://toolbelt.heroku.com/), then:
-### Clone repository
-`git clone https://github.com/Kylmakalle/heroku-telegram-bot.git`
-### Edit files
-1. Edit [bot.py](https://github.com/Kylmakalle/heroku-telegram-bot/blob/master/bot.py) file with your code
+## Description
+GeeksWeb Bot is a simplified and lightweight version of [Jadibot by Jaavid](https://github.com/jaavid/jadibot/) Telegram bot. It is designed to be easy to launch on HeroKu cloud application platform. In this bot, the database portion and other complicated parts of Jadibot have been removed to make it easy to configure on cloud application platforms.
 
-    1. **ATTENTION!** Do not collapse/delete/comment `some_token = os.environ[SOME_TOKEN]` style stings _(you can delete redis setup line if you do not need it)_, **do not change them with your REAL tokens**, all tokens will be setted up below in this guide!
-    
-    2. [More About Config Vars](https://devcenter.heroku.com/articles/config-vars)
-    3. Also, don't do like [this](http://i.imgur.com/Yni1jZX.png), it's insecure, **realy.**
+The use of this bot application is not difficult, you just need to copy/paste the content to your HeroKu application and commit the code, however, before that you are required to set your website/blog RSS feed as well as access token. In order to do so, just change the following values in index.php file,
 
+	$client = new Zelenin\Telegram\Bot\Api('AccessToken');
+	$url = 'Your website RSS feed';
 
-2. Edit [requirments.txt](https://github.com/Kylmakalle/heroku-telegram-bot/blob/master/requirements.txt) with your code's dependencies
-3. Specify your python [runtime](https://github.com/Kylmakalle/heroku-telegram-bot/blob/master/runtime.txt), avaliable versions listed [here](https://devcenter.heroku.com/articles/python-runtimes)
+## Usage 
+The working version of this bot program is deployed for [blog.madadipouya.com](blog.madadipouya.com) AKA WeeksWeb on HeroKu. Click on  [telegram.me/GeeksWebBot](telegram.me/GeeksWebBot) link to start interaction with the bot.
 
-### Go to command line
-```
-cd heroku-telegram-bot
-heroku login
-heroku create --region eu appname # create app in eu region, common regions: eu, us
-heroku addons:create heroku-redis:hobby-dev -a appname # (Optionaly) installing redis
-heroku buildpacks:set heroku/python # set python buildpack
-git push heroku master # deploy app to heroku
-heroku config:set TELEGRAM_TOKEN=123456789:AAABBBCCCDDDEEEFFFGGGHHHIIIJJJKKKLL # set config vars, insert your own
-heroku config:set SOME_API_TOKEN=qwertyuiop1234567890
-                ...
-heroku ps:scale bot=1 # start bot dyno
-heroku logs --tail # If for some reason it’s not working, check the logs
-heroku ps:stop bot #stop bot dyno
-```
+List of available commands for this bot are,
+	
+- ````/help```` Shows list of available commands
+- ````/email```` Gets email address of the blog owner
+- ````/latest```` Displays the latest of the blog
 
-## Deploying via [Heroku Dashboard](https://dashboard.heroku.com) (GUI)
-1. [Fork](https://github.com/Kylmakalle/heroku-telegram-bot/fork) this repo to your account. 
-2. [Edit files](https://github.com/Kylmakalle/heroku-telegram-bot#edit-files)
-3. Go to [Dashboard](https://dashboard.heroku.com), login, Press _New_ and choose _Create new app._
-4. Fill in an _App Name_ and choose _Runtime Region._
-5. Connect your GitHub repo at _Deploy_ page.
-6. Setup **Automatics deploys** _(Optionaly)._
-7. _Deploy a GitHub branch._
-8. Then go to a _Settings_ page, click _Reveal Config Vars_ and then add your own, for example:
-![Config Vars](http://i.imgur.com/C3cmphh.png)
-9. **Finally**, go to the _Resources_ page.
-    1. Install _Heroku Redis_ add-on _(Optionaly)_
-    2. Press on a small pen button, move slider and then click _Confirm_, that will start bot dyno.
-    3. Simply move slider back if you need to stop bot dyno, remember to click _Confirm_.
-    4. If for some reason it’s not working, check the logs here 
-    
-    ![Logs](http://i.imgur.com/rIHU6zF.png)
+## Dependencies
+The program works out the box so smoothly and all necessary dependencies have been already added to the project.
+You just need to run it in your server. It is highly recommended to run "composer update" command before deploying your application in order to update all dependencies
 
-### More about
-- https://devcenter.heroku.com/articles/dynos
-- https://devcenter.heroku.com/articles/config-vars
-- https://devcenter.heroku.com/articles/heroku-redis
-- https://devcenter.heroku.com/articles/error-codes
+## Screenshot
+<p align="center">
+<img src="http://blog.madadipouya.com/wp-content/uploads/2014/07/screenshot-web-telegram-org-2015-10-04-03-48-33.png" alt="Drawing" height="300" width="400"/>
+</p>
 
-Thanks to [Roman Zaynetdinov](https://github.com/zaynetro) for awesome and easy CLI guide.
+## Useful resources
+If you do not know how to setup a telegram bot, I recommend you to have a look on the following link:
+
+[http://blog.madadipouya.com/2015/10/04/how-to-create-telegram-bot-with-php-and-host-in-heroku/](http://blog.madadipouya.com/2015/10/04/how-to-create-telegram-bot-with-php-and-host-in-heroku/)
+
+## Contact
+* kasra@madadipouya.com
+* kasra_mp@live.com
+
+## License
+GeeksWeb Bot (GWB) is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License version 3
+as published by the Free Software Foundation.
+
+GeeksWeb Bot (GWB) is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.  <http://www.gnu.org/licenses/>
+
+Author(s):
+
+© 2015-2017 Kasra Madadipouya <kasra@madadipouya.com>
